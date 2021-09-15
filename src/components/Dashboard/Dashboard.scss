@@ -1,0 +1,83 @@
+$black:#000D0C;
+$mainColor:#22A000;
+$firstFont:'Montserrat';
+$secondFont:'Work Sans';
+
+#dashboard{
+	background:$black;
+	color:white;
+	width:100vw;
+	height:100vh;
+}
+.title{
+	display:flex;
+	justify-content:center;
+	margin:0;
+	font-family:$secondFont;
+	font-size:4em;
+	text-transform: uppercase;
+	font-weight:bold;
+}
+.subtitle{
+	text-transform: uppercase;
+	font-family:$secondFont;
+	font-size:3em;
+	margin:0.5em 0;
+
+	text-align:right;
+	&:after{
+		content: '';
+  	display: inline-block;
+  	width: 30em;
+  	height: 0.05em;
+  	background: white;
+  	margin-left:1em;
+  	margin-bottom:0.2em;
+	}
+}
+.board{
+	display:grid;
+	place-content:center;
+	margin-top:5em;
+}
+.dashboard-elem{
+	display:flex;
+	font-size:1.2em;
+	align-items:center;
+	font-weight:lighter;
+	font-family:$firstFont;
+	margin: 0.5em 0;
+	&>p{
+		width:15em;
+		text-align:right;
+		margin: 0 2em;
+	}
+	&>:not(p){
+
+	}
+}
+
+input[type="checkbox"]{
+	margin:0;
+	border:none;
+	outline:none;
+	border-radius:0;
+	appearance:none;
+	background:white;
+height:15px;
+width:15px;
+
+&:checked{
+	background:$mainColor;
+}
+&:checked:before{
+	content: '\2714';
+display: block;
+text-align: center;
+color: white;
+}
+}
+
+input[type="text"]{
+	width:45em;
+}

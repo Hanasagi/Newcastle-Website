@@ -1,17 +1,7 @@
 <template>
   <div id="home">
     <div class="container">
-      <header class="topLogin">
-        <div>
-          <div class="chibi"><img src="@/assets/NewcastleChibi.png"/></div>
-          <div class="chibi--back"></div>
-          <div class="right-triangle">
-        </div>
-        <div>
-          <p class="login-card">Login</p>
-        </div>
-        </div>
-      </header>
+      <LoginCard/>
       <div class="a">
         <img id="newcastle" src="@/assets/Newcastle.png" />
       </div>
@@ -48,8 +38,12 @@
 
 
 <script>
+import LoginCard from "../LoginCard.vue";
 export default {
   name: 'Home',
+  components: {
+   LoginCard
+ },
 }
 </script>
 
