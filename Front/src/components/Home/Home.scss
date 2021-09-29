@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+$black: rgba(0, 0, 0, 0.5);
+$mainColor:#22A000;
+$secondaryColor:#1C8400;
+$firstFont:'Montserrat';
+$secondFont:'Work Sans';
+#home{
+	width:100vw;
+	height:100vh;
+	background:url("../../assets/background.png");
+	background-size:cover;
+	color:white;
+	box-sizing: border-box;
+}
+
+.container {
+  display: grid; 
+  grid-template-columns: 45vw 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  grid-template-areas: 
+    "a b"
+    "a b"; 
+  width: 100%; 
+  height: 100%; 
+}
+.a { 
+	grid-area: a; 
+	display:grid;
+	place-content:center;
+}
+.b { grid-area: b;
+	display:grid;
+	justify-content:center;
+	margin-top:2em; 
+}
+
+#newcastle{
+	width:38em;
+	display:grid;
+	place-content:center;
+}
+
+
+.info-container{
+	width:53em;
+	height:35em;
+	background: $black;
+	display:grid;
+	justify-content:center;
+	position:relative;
+}
+.botPresentation{
+	height:16em;
+	width:53em;
+	background:$black;
+	position:relative;
+}
+.logo{
+	margin-top:1em;
+	width:51em;
+	height:auto;
+	background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='white' stroke-width='4' stroke-dasharray='12%2c 24' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+	z-index:2;
+}
+
+.mainButton{
+  position:absolute;
+  z-index:100;
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap:0 34em;
+  grid-template-areas: 
+    "a b"; 
+  bottom: 0;
+  left: 0;
+  margin-bottom: -2em;
+	
+	&>div{
+		position:absolute;
+		margin:0 1em;
+		background:$mainColor;
+		bottom:0;
+		overflow:hidden;
+		&>p{
+			margin:0;
+		}
+	}
+
+	&>div:first-of-type{
+		grid-area:a;
+		width:33em;
+		height:10em;
+		display:flex;
+		flex-direction:column;
+		align-items: flex-end;
+    justify-content: center;
+    &>p{
+    	margin-right:0.5em;
+    }
+	}
+	&>div:last-of-type{
+		grid-area:b;
+		width:17em;
+		height:16em;
+		display:flex;
+		flex-direction:column;
+		&>p{
+			display:block;
+			margin-left:0.5em;
+		}
+	}
+	.title{
+		z-index:2;
+		font-family:$firstFont;
+		font-weight:400;
+		font-size:3em;
+	}
+	.subtitle{
+		z-index:2;
+		margin:0;
+		font-family:$secondFont;
+		font-weight:bolder;
+		font-size:1.1em;
+	}
+	.pattern{
+		position:absolute;
+		mask:url("../../assets/pattern.svg");
+		mask-size:cover;
+		background-color:#22A800;
+		width:90%;
+		height:80%;
+		z-index:1;
+	}
+	.pattern2{
+		position:absolute;
+		top:1em;
+		mask:url("../../assets/pattern.svg");
+		mask-size:cover;
+		background-color:#22A800;
+		width:90%;
+		height:80%;
+		z-index:1;
+	}
+	.background-svg{
+		position:absolute;
+		mask:url("../../assets/question.svg");
+		mask-size:cover;
+		mask-repeat:no-repeat;
+		background-color:$secondaryColor;
+		width:40%;
+		height:100%;
+		left:0;
+	}
+	.background-svg2{
+		position:absolute;
+		mask:url("../../assets/boat.svg");
+		mask-size:cover;
+		background-color:$secondaryColor;
+		width:100%;
+		height:80%;
+		bottom:0;
+
+	}
+
+}
+
+footer{
+	position:fixed;
+	bottom:0;
+	display:flex;
+	margin-bottom:0.5em;
+	z-index:3;
+
+	.dashboard{
+		font-family:$secondFont;
+		color:white;
+		text-transform: uppercase;
+		font-weight:bold;
+		font-size:2.5em;
+
+		padding:0.7em 1.5em;
+		margin:0 0.2em;
+		background:#22A00080;
+		border:none;
+		outline:none;
+	}
+	.footer-button{
+		font-family:$secondFont;
+		color:white;
+		text-transform: uppercase;
+		font-weight:bold;
+		font-size:2.5em;
+		padding:0 1.5em;
+		margin-right:0.2em;
+		margin-bottom:0.1em;
+		background:$black;
+		border:none;
+		outline:none;
+		display:flex;
+		align-items:center;
+		&>svg{
+			fill:white;
+			width:1em;
+			height:auto;
+			margin:0 0.2em;
+		}
+		&:last-of-type>img{
+			width:1em;
+		}
+	}
+
+}
