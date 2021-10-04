@@ -6,7 +6,7 @@ class GuildService {
   }
 
   findOne(uid) {
-    return http.get(`/guild?uid=${uid}`);
+    return http.get(`/guild/${uid}`);
   }
 
   create(data) {

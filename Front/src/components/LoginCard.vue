@@ -8,7 +8,7 @@
         </div>
         <div class="link-wrapper">
           <a class="login" ref="username" href="https://discord.com/api/oauth2/authorize?client_id=738389785697321030&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F%23%2Fredirect&response_type=code&scope=identify%20guilds">Login</a> 
-          <a class="logout" @click="logout">Logout</a>
+          <a class="logout" ref="logout" style="display:none;" @click="logout">Logout</a>
         </div>
         </div>
 </header>
@@ -32,11 +32,17 @@
       if(this.user!==null){
         this.$refs.username.innerText=this.user;
         this.$refs.username.style.pointerEvents="none";
+        this.$refs.logout.style.display="block";
       }
     },
-    logout(){
-      UserService.delete(this.user)
-      localStorage.removeItem("user")
+    async logout(){
+      let id = await UserService.findOne(this.user).then((r)=>{return r.data[0].id})
+      UserService.delete(id).then(()=>{
+        localStorage.removeItem("user");
+        this.$refs.logout.style.display="none";
+        window.location.href="/";
+      });
+      
     }
   }
 }

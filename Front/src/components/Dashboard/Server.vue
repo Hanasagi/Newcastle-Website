@@ -16,7 +16,7 @@
           </div>
           <span>
               <p>{{g[0].name}}</p>
-              <button>Setup</button>
+              <button @click="setup(g[0].uid)">Setup</button>
             </span>
         </div>
       </div>
@@ -59,6 +59,9 @@ export default {
   },
   forceRerender(){
     this.indexKey+=1;
+  },
+  setup(id){
+    this.$router.push({path:'/dashboard', hash: "#"+id})
   }
  }
 }

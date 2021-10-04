@@ -1,5 +1,5 @@
 const db = require("../models");
-const Guild = db.guild;
+const Options = db.options;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -12,15 +12,20 @@ exports.create = (req, res) => {
   }
 
   // Create a Tutorial
-  const guild = {
+  const options = {
     uid: req.body.uid,
-    name: req.body.name,
-    lang: req.body.lang,
-    icon_url: req.body.icon_url,
+    show_news: req.body.show_news,
+    webhook_url: req.body.webhook_url,
+    danbooru_feed: req.body.danbooru_feed,
+    news_channel: req.body.news_channel,
+    check_channel: req.body.check_channel,
+    sfw_danbooru_channel: req.body.sfw_danbooru_channel,
+    nsfw_danbooru_channel: req.body.nsfw_danbooru_channel,
+    last_id: req.body.last_id
   };
 
   // Save Tutorial in the database
-  Guild.create(guild)
+  Options.create(options)
     .then(data => {
       res.send(data);
       console.log(res)
@@ -38,7 +43,7 @@ exports.findAll = (req, res) => {
     const uid = req.query.uid;
   var condition = uid ? { uid: { [Op.like]: `%${uid}%` } } : null;
 
-  Guild.findAll({ where: condition })
+  Options.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -52,24 +57,27 @@ exports.findAll = (req, res) => {
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
+  console.log(req.params)
     const uid = req.params.uid;
     var condition = uid ? { uid: { [Op.like]: `%${uid}%` } } : null;
-  Guild.findOne({ where: condition })
+
+  Options.findOne({ where: condition })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Bot with name=" + uid
+        message: "Error retrieving " + uid
       });
     });
 };
 
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
+  console.log(req.params)
   const uid = req.params.uid;
 
-  Guild.update(req.body, {
+  Options.update(req.body, {
     where: { uid: uid }
   })
     .then(num => {
@@ -94,7 +102,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const uid = req.params.uid;
 
-  Guild.destroy({
+  Options.destroy({
     where: { uid: uid }
   })
     .then(num => {
@@ -117,7 +125,7 @@ exports.delete = (req, res) => {
 
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
-    Guild.destroy({
+    Options.destroy({
     where: {},
     truncate: false
   })

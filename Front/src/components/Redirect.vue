@@ -75,6 +75,10 @@
           })
           UserService.create({nickname:userInfo.username,picture:"https://cdn.discordapp.com/avatars/142682730776231936/"+userInfo.avatar,token:token.access_token,refresh:token.refresh_token,scope:token.scope,type:token.token_type,guild:adminGuild})
           localStorage.setItem("user",userInfo.username)
+          let url = window.location.toString();
+          let first_part_url= url.substring(0,url.indexOf("?")-1)
+          let second_part_url= url.substring(url.indexOf("#"),url.length)
+          window.history.replaceState({},document.title,first_part_url+second_part_url)
           this.$refs.router.click()
 
       })

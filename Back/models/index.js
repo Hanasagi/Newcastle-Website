@@ -21,5 +21,6 @@ db.sequelize = sequelize;
 db.bot = require("./bot.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.guild = require("./guild.model.js")(sequelize, Sequelize);
+db.options = require("./options.model.js")(sequelize, Sequelize);
 
 module.exports = db;

@@ -6,7 +6,7 @@ class UserService {
   }
 
   findOne(nickname) {
-    return http.get(`/user?${nickname}`);
+    return http.get(`/user?nickname=${nickname}`);
   }
 
   create(data) {
@@ -17,8 +17,8 @@ class UserService {
     return http.put(`/user/${id}`, data);
   }
 
-  delete(user) {
-    return http.delete(`/user/${user}`);
+  delete(id) {
+    return http.delete(`/user/${id}`);
   }
 
   deleteAll() {
